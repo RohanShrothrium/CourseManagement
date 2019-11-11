@@ -121,3 +121,6 @@ media/*
 
 #database file
 /groupproject/database.py
+
+#Schema Diagram
+!media/Django\ Schema\ Diagram.png
