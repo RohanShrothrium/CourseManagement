@@ -28,13 +28,8 @@ class Instructor(models.Model):
 
 class Project(models.Model):
     ProjectID = models.CharField(max_length=5, default='')
-    InstID = models.CharField(max_length=5, default='')
+    Instructor = models.ForeignKey(Instructor, on_delete = models.CASCADE, default=None)
     Title = models.TextField()
     Description = models.TextField()
 
 
-class TakesProject(models.Model):
-    Project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    Student = models.ForeignKey(User, on_delete = models.CASCADE)
-    Performance = models.TextField()
-    Feedback = models.TextField()

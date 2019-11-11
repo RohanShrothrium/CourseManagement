@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from portal.models import *
 
 # Create your models here.
 
@@ -10,3 +11,25 @@ class Profile(models.Model):
     Cpi = models.DecimalField(max_digits=3, decimal_places=2, default=0)
     def __str__(self):
         return f'{self.user.username} Profile'
+
+
+
+class TakesProject(models.Model):
+    Project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    Student = models.ForeignKey(User, on_delete = models.CASCADE)
+    Performance = models.TextField()
+    Feedback = models.TextField()
+    def __str__(self):
+        return f'{self.Project.ProjectID} Project'
+
+
+class TakesCourse(models.Model):
+    Course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    Student = models.ForeignKey(User, on_delete = models.CASCADE)
+    Year = models.CharField(max_length=4)
+    Sem = models.CharField(max_length=6)
+    Grade = models.CharField(max_length=2, default='OG')
+    Feedback = models.TextField()
+    def __str__(self):
+        return f'{self.Course.CourseID} Course'
+    
