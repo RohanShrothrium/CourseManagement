@@ -9,11 +9,11 @@ class Department(models.Model):
 
 class Course(models.Model):
     CourseID = models.CharField(max_length=5, primary_key=True)
-    CourseName = models.TextField()
+    CourseName = models.CharField(max_length=50)
     DeptName = models.ForeignKey(Department, models.SET_NULL, null=True)
     Credits = models.IntegerField()
     Performance = models.CharField(max_length=10, null=True, blank=True)
-    Feedback = models.TextField()
+    Feedback = models.TextField(blank=True, null=True)
 
 
 class Prerequisites(models.Model):
@@ -49,23 +49,23 @@ class Classroom(models.Model):
 
 class Instructor(models.Model):
     InstID = models.CharField(max_length=5, default='', primary_key=True)
-    InstName = models.TextField(default='')
+    InstName = models.CharField(max_length=100)
     DeptName = models.ForeignKey(Department, models.SET_NULL, null=True)
     Email = models.EmailField()
 
 
 class Project(models.Model):
     ProjectID = models.CharField(max_length=5, default='', primary_key=True)
-    InstID = models.CharField(max_length=5, default='')
-    Title = models.TextField()
+    InstID = models.ForeignKey(Instructor, models.SET_NULL, null=True)
+    Title = models.CharField(max_length=500)
     Description = models.TextField()
 
 
 class TakesProject(models.Model):
     Project = models.ForeignKey(Project, on_delete=models.CASCADE)
     Student = models.ForeignKey(User, on_delete=models.CASCADE)
-    Performance = models.TextField()
-    Feedback = models.TextField()
+    Performance = models.CharField(max_length=500, blank=True, null=True)
+    Feedback = models.TextField(blank=True, null=True)
 
     class Meta:
         unique_together = (('Project', 'Student'),)
@@ -83,7 +83,7 @@ class Takes(models.Model):
     Student = models.ForeignKey(User, models.CASCADE)
     Section = models.ForeignKey(Section, models.CASCADE)
     Feedback = models.TextField(blank=True, null=True)
-    Grade = models.DecimalField(max_digits=4, decimal_places=2)
+    Grade = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
 
     class Meta:
         unique_together = (('Student', 'Section'),)
@@ -103,8 +103,8 @@ class Specialization(models.Model):
 
 class Survey(models.Model):
     Student = models.ForeignKey(User, models.CASCADE)
-    Course = models.ForeignKey(Course, models.CASCADE)
     Spec = models.ForeignKey(Specialization, models.SET_NULL, null=True)
+    Course = models.ForeignKey(Course, models.CASCADE)
 
     class Meta:
         unique_together = (('Student', 'Course', 'Spec'),)
