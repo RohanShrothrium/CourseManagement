@@ -1,0 +1,34 @@
+{
+  "name": "coursemanagement",
+  "version": "1.0.0",
+  "description": "University Course Management",
+  "main": "Course_Management/manage.py",
+  "scripts": {
+    "static": "npm run directory && npm run bootstrap && npm run jquery && npm run popperjs",
+    "directory": "mkdir -p Course_Management/portal/static/css Course_Management/portal/static/js",
+    "bootstrap": "cp node_modules/bootstrap/dist/css/bootstrap.min.css Course_Management/portal/static/css/ && cp node_modules/bootstrap/dist/js/bootstrap.js Course_Management/portal/static/js/",
+    "jquery": "cp node_modules/jquery/dist/jquery.min.js Course_Management/portal/static/js/",
+    "popperjs": "cp node_modules/popper.js/dist/umd/popper.min.js Course_Management/portal/static/js/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RohanShrothrium/CourseManagement.git"
+  },
+  "keywords": [
+    "django",
+    "python",
+    "python3",
+    "sqlite"
+  ],
+  "author": "SRISHTI SRIVASTAVA, ROHAN SHROTHRIUM, ASHISH KUMAR BHOI",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/RohanShrothrium/CourseManagement/issues"
+  },
+  "homepage": "https://github.com/RohanShrothrium/CourseManagement#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
+  }
+}
