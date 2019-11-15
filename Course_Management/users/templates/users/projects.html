@@ -13,6 +13,16 @@
       </div>
       <!-- FORM HERE -->
     </div>
-    <a class="nav-item nav-link" href="{% url 'courses'%}">Ongoing Courses</a>
-    <a class="nav-item nav-link" href="{% url 'projects'%}">Projects</a>
+    {% for project in projects %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ project.Project.ProjectID }}</a>
+              <small class="text-muted">{{ project.Project.Instructor }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ project.Project.Title }}</a></h2>
+            <p class="article-content">{{ project.Project.Description }}</p>
+          </div>
+        </article>
+    {% endfor %}
 {% endblock content %}

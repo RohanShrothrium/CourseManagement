@@ -13,6 +13,16 @@
       </div>
       <!-- FORM HERE -->
     </div>
-    <a class="nav-item nav-link" href="{% url 'courses'%}">Ongoing Courses</a>
-    <a class="nav-item nav-link" href="{% url 'projects'%}">Projects</a>
+    {% for course in courses %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ course.Course.CourseID }}</a>
+              <small class="text-muted">{{ course.Course.DeptName }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ course.Course.CourseName }}</a></h2>
+            <a class="article-content" href="{% url 'portal-about'%}">Fill feedback form</a>
+          </div>
+        </article>
+    {% endfor %}
 {% endblock content %}
