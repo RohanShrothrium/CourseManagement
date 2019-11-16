@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import *
 from .models import *
+from portal.models import QuestionPaper
 
 # Create your views here.
 @login_required
@@ -43,3 +44,9 @@ def projects(request):
     }
     return render(request, 'users/projects.html', context)
 
+
+def Question_Paper(request, Course_ID):
+    context = {
+        'QuestionPaper': QuestionPaper.objects.all().filter(CourseID=Course_ID[1:6])
+    }
+    return render(request, 'users/questionpapers.html', context)

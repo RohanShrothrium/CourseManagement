@@ -18,7 +18,6 @@ class TakesProject(models.Model):
     Project = models.ForeignKey(Project, on_delete=models.CASCADE)
     Student = models.ForeignKey(User, on_delete = models.CASCADE)
     Performance = models.TextField()
-    Feedback = models.TextField()
     def __str__(self):
         return f'{self.Project.ProjectID} Project'
 
@@ -38,3 +37,5 @@ class TakesCourse(models.Model):
 class Feedback(models.Model):
     CourseID = models.CharField(max_length=5, default='')
     Feedback = models.TextField()
+    def __str__(self):
+        return f'{self.Course.CourseID} Feedback'

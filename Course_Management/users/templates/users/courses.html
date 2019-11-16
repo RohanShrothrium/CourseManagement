@@ -17,10 +17,10 @@
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ course.Course.CourseID }}</a>
+              <a class="mr-2" href="http://localhost:8000/courses/'{{course.Course.CourseID}}'">{{ course.Course.CourseID }}</a>
               <small class="text-muted">{{ course.Course.DeptName }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ course.Course.CourseName }}</a></h2>
+            <h2><a class="article-title" href="http://localhost:8000/courses/{{course.Course.CourseID}}">{{ course.Course.CourseName }}</a></h2>
             {% if course.FeedbackGiven == 0 %}
                 <div class="form-group">
                     <form method="POST" onsubmit="return confirm('Are you sure you want to enroll?');">
@@ -35,6 +35,8 @@
                         </div>
                     </form>
                 </div>
+            {% else %}
+                <medium>Feedback Already Given</medium>
             {% endif %}
             <!-- <a class="article-content" href="{% url 'portal-about'%}">Fill feedback form</a> -->
           </div>

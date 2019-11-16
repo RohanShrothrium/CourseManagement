@@ -32,3 +32,8 @@ class Project(models.Model):
     Description = models.TextField()
 
 
+class QuestionPaper(models.Model):
+    CourseID = models.CharField(max_length=5)
+    QuePap = models.TextField()
+    def __str__(self):
+        return f'{self.CourseID} QP'
