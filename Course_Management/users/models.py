@@ -25,11 +25,16 @@ class TakesProject(models.Model):
 
 class TakesCourse(models.Model):
     Course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    CourseID = models.CharField(max_length=5, default='')
     Student = models.ForeignKey(User, on_delete = models.CASCADE)
     Year = models.CharField(max_length=4)
     Sem = models.CharField(max_length=6)
     Grade = models.CharField(max_length=2, default='OG')
-    Feedback = models.TextField()
+    FeedbackGiven = models.DecimalField(max_digits=3, decimal_places=2, default=0)
     def __str__(self):
         return f'{self.Course.CourseID} Course'
     
+
+class Feedback(models.Model):
+    CourseID = models.CharField(max_length=5, default='')
+    Feedback = models.TextField()

@@ -7,7 +7,6 @@ class Course(models.Model):
     CourseName = models.TextField()
     DeptName = models.TextField()
     Credits = models.IntegerField()
-    Feedback = models.TextField()
 
     def __str__(self):
         return self.CourseID

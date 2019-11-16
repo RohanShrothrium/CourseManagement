@@ -21,7 +21,22 @@
               <small class="text-muted">{{ course.Course.DeptName }}</small>
             </div>
             <h2><a class="article-title" href="#">{{ course.Course.CourseName }}</a></h2>
-            <a class="article-content" href="{% url 'portal-about'%}">Fill feedback form</a>
+            {% if course.FeedbackGiven == 0 %}
+                <div class="form-group">
+                    <form method="POST" onsubmit="return confirm('Are you sure you want to enroll?');">
+                        {% csrf_token %}
+                        <fieldset class="form-group"">
+                            <legend class="border-bottom mb-4">Feedback</legend>
+                            {{ form|crispy }}
+                            <span>{{ course.Course.CourseID }}</span>
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            {% endif %}
+            <!-- <a class="article-content" href="{% url 'portal-about'%}">Fill feedback form</a> -->
           </div>
         </article>
     {% endfor %}

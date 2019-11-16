@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(Profile)
 admin.site.register(TakesProject)
 admin.site.register(TakesCourse)
+admin.site.register(Feedback)
