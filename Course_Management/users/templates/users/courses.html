@@ -14,6 +14,7 @@
       <!-- FORM HERE -->
     </div>
     {% for course in courses %}
+    {% if course.Year == '2019' %}
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
@@ -41,5 +42,6 @@
             <!-- <a class="article-content" href="{% url 'portal-about'%}">Fill feedback form</a> -->
           </div>
         </article>
+    {% endif %}
     {% endfor %}
 {% endblock content %}

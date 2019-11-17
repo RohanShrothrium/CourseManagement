@@ -13,9 +13,18 @@
       </div>
       <!-- FORM HERE -->
     </div>
-    {% for qp in QuestionPaper %}
-        <medium><a href="{{qp.QuePap}}">Question paper link<a> </medium>
-        <br>
-        <br>
+    {% for course in courses %}
+    {% if course.Year != '2019' %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ course.Course.CourseID }}</a>
+              <small class="text-muted">{{ course.Course.CourseName }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ course.Course.DeptName }}</a></h2>
+            <p class="article-content">{{ course.Course.Credits }}</p>
+          </div>
+        </article>
+    {% endif %}
     {% endfor %}
 {% endblock content %}

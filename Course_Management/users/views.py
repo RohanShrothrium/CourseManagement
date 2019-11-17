@@ -45,6 +45,13 @@ def projects(request):
     return render(request, 'users/projects.html', context)
 
 
+def prevcourses(request):
+    context = {
+        'courses': request.user.takescourse_set.all()
+    }
+    return render(request, 'users/prevcourses.html', context)
+
+
 def Question_Paper(request, Course_ID):
     context = {
         'QuestionPaper': QuestionPaper.objects.all().filter(CourseID=Course_ID)
