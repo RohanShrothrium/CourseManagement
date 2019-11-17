@@ -47,6 +47,6 @@ def projects(request):
 
 def Question_Paper(request, Course_ID):
     context = {
-        'QuestionPaper': QuestionPaper.objects.all().filter(CourseID=Course_ID[1:6])
+        'QuestionPaper': QuestionPaper.objects.all().filter(CourseID=Course_ID)
     }
     return render(request, 'users/questionpapers.html', context)
