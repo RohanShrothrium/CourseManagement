@@ -38,4 +38,4 @@ class Feedback(models.Model):
     CourseID = models.CharField(max_length=5, default='')
     Feedback = models.TextField()
     def __str__(self):
-        return f'{self.Course.CourseID} Feedback'
+        return f'{self.CourseID} Feedback'
