@@ -1,9 +1,44 @@
 {% extends "portal/base.html" %}
+{% load static %}
 {% block content %}
-    <h1><center>WELCOME TO COURSE MANAGEMENT PORTAL</center></h1>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1><center>LOGIN TO CONTINUE TO YOUR PROFILE</center></h1>
+<div class="jumbotron-fluid">
+        <div class="container">
+            <h1 class="text-center display-4">Course Management Portal</h1>
+            <h2 class="text-center">Group 12</h2>
+        </div>
+    </div>
+    <!-- about -->
+    <div class="jumbotron">
+        <h4>This is the course management system for IIT Dharwad with an online survey for student to determine course
+            specializations</h4>
+    </div>
+    <div class="container">
+        <h3 class="text-center"><u>Group Members</u></h3>
+        <div class="row text-center padding">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Rohan Shrothrium</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'images/ashish.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Ashish Kumar Bhoi</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Srishti Srivastav</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
