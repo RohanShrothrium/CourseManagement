@@ -1,0 +1,39 @@
+{% extends "portal/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+          <p class="text-secondary">{{ user.profile.DepName }}</p>
+          <p class="text-secondary">{{ user.profile.Cpi }}</p>
+        </div>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+    <style>
+        #div_id_Student{
+            display: none;
+        }
+        #div_id_CourseID{
+            display: none;
+        }
+    </style>
+                <div class="form-group">
+                    <form method="POST" onsubmit="return confirm('Are you sure you want to register for the course??');">
+                        {% csrf_token %}
+                        <fieldset class="form-group"">
+                            <legend class="border-bottom mb-4">Course Registeration Form</legend>
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            <!-- <a class="article-content" href="{% url 'portal-about'%}">Fill feedback form</a> -->
+          </div>
+        </article>
+{% endblock content %}

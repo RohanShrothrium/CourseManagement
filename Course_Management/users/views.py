@@ -21,7 +21,6 @@ def courses(request):
         # here next...
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            print(form.instance.CourseID)
             temp = request.user.takescourse_set.all().filter(CourseID=form.instance.CourseID).first()
             temp.FeedbackGiven = 1
             temp.save()
@@ -35,6 +34,38 @@ def courses(request):
         'form': form
     }
     return render(request, 'users/courses.html', context)
+
+
+def register(request):
+    if request.method == 'POST':
+        form = CourseRegisterForm(request.POST)
+        if form.is_valid():
+            for i in request.user.takescourse_set.all():
+                if i.CourseID == form.instance.Course.CourseID:
+                    messages.warning(request, f'You have already taken up {i.CourseID} !')
+                    return redirect('profile')
+            for i in Prereqs.objects.all():
+                if i.CourseID == form.instance.Course.CourseID:
+                    temp = 0
+                    for j in request.user.takescourse_set.all():
+                        if i.PrereqID == j.CourseID:
+                            temp = 1
+                    if not temp:
+                        messages.warning(request, f'You have not finished the prerequisites for {i.CourseID} !')
+                        return redirect('profile')
+            form.instance.Student = request.user
+            form.instance.CourseID = form.instance.Course.CourseID
+            form.save()
+            return redirect('profile')
+    else:		
+        # we come here first and.....
+        form = CourseRegisterForm()
+        form.instance.Student = request.user
+    context = {
+        'courses': Course.objects.all(),
+        'form': form
+    }
+    return render(request, 'users/register.html', context)
 
 
 def projects(request):
@@ -54,6 +85,7 @@ def prevcourses(request):
 
 def Question_Paper(request, Course_ID):
     context = {
+        'Course' : Course.objects.all().filter(CourseID=Course_ID).first(),
         'QuestionPaper': QuestionPaper.objects.all().filter(CourseID=Course_ID)
     }
     return render(request, 'users/questionpapers.html', context)

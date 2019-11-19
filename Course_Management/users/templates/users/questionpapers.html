@@ -13,8 +13,11 @@
       </div>
       <!-- FORM HERE -->
     </div>
+    <h1>Previous Year Question Papers for {{Course.CourseName}}</h1>
+    <br>
+    <br>
     {% for qp in QuestionPaper %}
-        <medium><a href="{{qp.QuePap}}">Question paper link<a> </medium>
+        <medium><a href="{{qp.QuePap}}">Google Drive Link : {{qp.QuePap}} <a> </medium>
         <br>
         <br>
     {% endfor %}

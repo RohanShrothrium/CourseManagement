@@ -39,3 +39,5 @@ class Feedback(models.Model):
     Feedback = models.TextField()
     def __str__(self):
         return f'{self.Course.CourseID} Feedback'
+
+
